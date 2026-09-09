@@ -16,7 +16,7 @@ export default function TransactionList({ transactions, onDelete }) {
           <li key={tx.id} className="transaction-row">
             <span className="transaction-row__dot" style={{ background: category.color }} aria-hidden="true" />
             <div className="transaction-row__main">
-              <span className="transaction-row__desc">{tx.description}</span>
+              <span className="transaction-row__desc">{tx.description || t(category.key)}</span>
               <span className="transaction-row__meta">
                 {t(category.key)} · {formatDate(tx.date, language)}
               </span>

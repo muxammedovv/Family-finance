@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { EXPENSE_CATEGORIES } from "../../data/categories";
 import { todayISO } from "../../utils/format";
+import MoneyInput from "../MoneyInput/MoneyInput";
 import "./TransactionForm.css";
 
 const emptyForm = (type = "expense") => ({
@@ -33,7 +34,7 @@ export default function TransactionForm({ initial, onSubmit, onCancel }) {
     if (!form.amount.toString().trim()) next.amount = t("validation.amountRequired");
     else if (Number.isNaN(amountNum) || amountNum <= 0) next.amount = t("validation.amountInvalid");
 
-    if (!form.description.trim()) next.description = t("validation.descriptionRequired");
+    if (form.type === "expense" && !form.description.trim()) next.description = t("validation.descriptionRequired");
     if (form.type === "expense" && !form.category) next.category = t("validation.categoryRequired");
     if (!form.date) next.date = t("validation.dateRequired");
 
@@ -47,7 +48,7 @@ export default function TransactionForm({ initial, onSubmit, onCancel }) {
     onSubmit({
       type: form.type,
       amount: Number(form.amount),
-      description: form.description.trim(),
+      description: form.type === "income" ? "" : form.description.trim(),
       category: form.type === "income" ? "income" : form.category,
       date: form.date,
     });
@@ -81,32 +82,30 @@ export default function TransactionForm({ initial, onSubmit, onCancel }) {
 
       <div className="field">
         <label className="field__label" htmlFor="tx-amount">{t("form.amountLabel")}</label>
-        <input
+        <MoneyInput
           id="tx-amount"
           className={`input ${errors.amount ? "input--error" : ""}`}
-          type="number"
-          inputMode="numeric"
-          min="0"
-          step="1000"
           placeholder={t("form.amountPlaceholder")}
           value={form.amount}
-          onChange={(e) => setField("amount", e.target.value)}
+          onChange={(val) => setField("amount", val)}
         />
         {errors.amount && <span className="field__error">{errors.amount}</span>}
       </div>
 
-      <div className="field">
-        <label className="field__label" htmlFor="tx-desc">{t("form.descriptionLabel")}</label>
-        <input
-          id="tx-desc"
-          className={`input ${errors.description ? "input--error" : ""}`}
-          type="text"
-          placeholder={t("form.descriptionPlaceholder")}
-          value={form.description}
-          onChange={(e) => setField("description", e.target.value)}
-        />
-        {errors.description && <span className="field__error">{errors.description}</span>}
-      </div>
+      {form.type === "expense" && (
+        <div className="field">
+          <label className="field__label" htmlFor="tx-desc">{t("form.descriptionLabel")}</label>
+          <input
+            id="tx-desc"
+            className={`input ${errors.description ? "input--error" : ""}`}
+            type="text"
+            placeholder={t("form.descriptionPlaceholder")}
+            value={form.description}
+            onChange={(e) => setField("description", e.target.value)}
+          />
+          {errors.description && <span className="field__error">{errors.description}</span>}
+        </div>
+      )}
 
       {form.type === "expense" && (
         <div className="field">

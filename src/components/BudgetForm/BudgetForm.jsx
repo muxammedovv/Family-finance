@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { EXPENSE_CATEGORIES } from "../../data/categories";
+import MoneyInput from "../MoneyInput/MoneyInput";
 import "./BudgetForm.css";
 
 export default function BudgetForm({ initial, availableCategories, onSubmit, onCancel }) {
@@ -40,14 +41,11 @@ export default function BudgetForm({ initial, availableCategories, onSubmit, onC
 
       <div className="field">
         <label className="field__label" htmlFor="budget-limit">{t("budget.monthlyLimit")}</label>
-        <input
+        <MoneyInput
           id="budget-limit"
           className={`input ${error ? "input--error" : ""}`}
-          type="number"
-          min="0"
-          step="10000"
           value={limit}
-          onChange={(e) => setLimit(e.target.value)}
+          onChange={setLimit}
         />
         {error && <span className="field__error">{error}</span>}
       </div>

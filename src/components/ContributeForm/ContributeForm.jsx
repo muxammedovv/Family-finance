@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { useFinance } from "../../context/FinanceContext";
 import { formatCurrency } from "../../utils/format";
+import MoneyInput from "../MoneyInput/MoneyInput";
 import "./ContributeForm.css";
 
 export default function ContributeForm({ goal, onSubmit, onCancel }) {
@@ -28,15 +29,12 @@ export default function ContributeForm({ goal, onSubmit, onCancel }) {
       </p>
       <div className="field">
         <label className="field__label" htmlFor="contribute-amount">{t("savings.contributionAmount")}</label>
-        <input
+        <MoneyInput
           id="contribute-amount"
           className={`input ${error ? "input--error" : ""}`}
-          type="number"
-          min="0"
-          step="10000"
           autoFocus
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={setAmount}
         />
         {error && <span className="field__error">{error}</span>}
       </div>

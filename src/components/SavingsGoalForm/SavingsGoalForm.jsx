@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
+import MoneyInput from "../MoneyInput/MoneyInput";
 import "./SavingsGoalForm.css";
 
 export default function SavingsGoalForm({ initial, onSubmit, onCancel }) {
@@ -40,14 +41,11 @@ export default function SavingsGoalForm({ initial, onSubmit, onCancel }) {
 
       <div className="field">
         <label className="field__label" htmlFor="goal-target">{t("savings.targetAmount")}</label>
-        <input
+        <MoneyInput
           id="goal-target"
           className={`input ${errors.target ? "input--error" : ""}`}
-          type="number"
-          min="0"
-          step="10000"
           value={target}
-          onChange={(e) => setTarget(e.target.value)}
+          onChange={setTarget}
         />
         {errors.target && <span className="field__error">{errors.target}</span>}
       </div>

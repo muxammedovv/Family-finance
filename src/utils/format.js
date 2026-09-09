@@ -40,3 +40,15 @@ export function todayISO() {
 export function currentMonthKey(dateStr) {
   return (dateStr || todayISO()).slice(0, 7); // "YYYY-MM"
 }
+
+// Strips everything but digits, so form state always holds a plain numeric string.
+export function parseAmountInput(value) {
+  return String(value ?? "").replace(/\D/g, "");
+}
+
+// Displays a digit-only string grouped with spaces as thousands separators.
+export function formatAmountInput(value) {
+  const digits = parseAmountInput(value);
+  if (!digits) return "";
+  return digits.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
