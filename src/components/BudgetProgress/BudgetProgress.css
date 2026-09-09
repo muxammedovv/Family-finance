@@ -1,0 +1,111 @@
+.budget-progress {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.budget-progress:last-child {
+  border-bottom: none;
+}
+
+.budget-progress__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.budget-progress__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.budget-progress__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.budget-progress__row-actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.link-btn--danger:hover {
+  color: var(--status-critical-text);
+}
+
+.budget-progress__track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.budget-progress__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.budget-progress__track--near {
+  background: var(--status-warning-bg);
+}
+
+.budget-progress__track--near .budget-progress__fill {
+  background: var(--status-warning);
+}
+
+.budget-progress__track--over {
+  background: var(--status-critical-bg);
+}
+
+.budget-progress__track--over .budget-progress__fill {
+  background: var(--status-critical);
+}
+
+.budget-progress__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.budget-progress__meta-muted {
+  color: var(--text-muted);
+}
+
+.budget-progress__remaining {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.budget-progress__remaining.is-negative {
+  color: var(--status-critical-text);
+}

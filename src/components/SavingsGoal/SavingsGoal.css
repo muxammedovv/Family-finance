@@ -1,0 +1,85 @@
+.savings-goal {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+}
+
+.savings-goal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.savings-goal__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.savings-goal__row-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.savings-goal__deadline {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.savings-goal__amounts {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.savings-goal__saved {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.savings-goal__target {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.savings-goal__track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.savings-goal__fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savings-goal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  font-size: 12.5px;
+}
+
+.savings-goal__remaining {
+  color: var(--text-secondary);
+}
+
+.savings-goal__percent {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.savings-goal__add {
+  margin-top: var(--space-4);
+  align-self: flex-start;
+}

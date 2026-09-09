@@ -1,0 +1,130 @@
+.expense-chart {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.expense-chart__viz {
+  position: relative;
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+}
+
+.expense-chart__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.expense-chart__center-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.expense-chart__center-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.expense-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.expense-chart__legend-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+}
+
+.expense-chart__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.expense-chart__legend-name {
+  color: var(--text-primary);
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expense-chart__legend-percent {
+  color: var(--text-muted);
+  font-size: 12px;
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.expense-chart__legend-value {
+  color: var(--text-secondary);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 96px;
+  text-align: right;
+}
+
+.expense-chart__tooltip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-size: 12.5px;
+}
+
+.expense-chart__tooltip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.expense-chart__tooltip-label {
+  color: var(--text-secondary);
+}
+
+.expense-chart__tooltip-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .expense-chart {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .expense-chart__viz {
+    align-self: center;
+  }
+
+  .expense-chart__legend-value {
+    min-width: 0;
+  }
+}

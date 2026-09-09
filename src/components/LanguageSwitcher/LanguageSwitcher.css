@@ -1,0 +1,9 @@
+.lang-switch {
+  flex-shrink: 0;
+}
+
+.lang-switch .segmented__option {
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
